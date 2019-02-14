@@ -1,6 +1,6 @@
 class MembersController < ApplicationController
     get '/signup' do
-
+        erb :create_member
     end
 
     post '/signup' do
@@ -8,7 +8,7 @@ class MembersController < ApplicationController
     end
 
     get '/login' do
-        
+        erb :login
     end
 
     post '/login' do
@@ -16,6 +16,6 @@ class MembersController < ApplicationController
     end
 
     get '/logout' do
-        
+
     end
 end
