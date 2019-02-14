@@ -8,7 +8,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    erb :welcome
+    erb :index
   end
 
   helpers do
@@ -19,5 +19,5 @@ class ApplicationController < Sinatra::Base
     def current_member
       Member.find(session[:member_id])
     end
-
+  end
 end
