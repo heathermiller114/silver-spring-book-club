@@ -15,18 +15,32 @@ class MembersController < ApplicationController
 
             #redirect
         end
-        
     end
 
     get '/login' do
-        erb :'members/login'
+        if !logged_in?
+            erb :'members/login'
+        #else
+            #redirect
+        end
     end
 
     post '/login' do
+        @member = Member.find_by(email: params[:email])
 
+        if @member && @member.authenticate(params[:password])
+            session[:member_id] = @member.id
+            #redirect
+        else
+            redirect "/login"
+        end
     end
 
     get '/logout' do
-
+        if logged_in?
+            session.clear
+        else
+            redirect "/login"
+        end
     end
 end
