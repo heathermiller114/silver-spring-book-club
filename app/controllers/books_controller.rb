@@ -3,13 +3,18 @@ class BooksController < ApplicationController
         if !logged_in?
             redirect "/login"
         else
+            @books = Book.all
             erb :'books/books'
         end
     end
 
     #Create
     get '/books/new' do
-
+        if !logged_in?
+            redirect "/login"
+        else
+            erb :'books/new'
+        end
     end
 
     post '/books' do
@@ -32,7 +37,7 @@ class BooksController < ApplicationController
 
     #Delete
     delete '/books/:id/delete' do
-        
+
     end
 
 
