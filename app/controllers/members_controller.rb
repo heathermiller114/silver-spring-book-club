@@ -13,15 +13,15 @@ class MembersController < ApplicationController
             @member.save
             session[:member_id] = @member.id
 
-            #redirect
+            redirect "/books"
         end
     end
 
     get '/login' do
         if !logged_in?
             erb :'members/login'
-        #else
-            #redirect
+        else
+            redirect "/books"
         end
     end
 
@@ -30,7 +30,7 @@ class MembersController < ApplicationController
 
         if @member && @member.authenticate(params[:password])
             session[:member_id] = @member.id
-            #redirect
+            redirect "/books"
         else
             redirect "/login"
         end
