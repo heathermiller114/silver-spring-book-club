@@ -1,4 +1,8 @@
+require 'sinatra/flash'
+
 class Member < ActiveRecord::Base
+    include ActiveModel::Validations
+
     has_many :books
     has_many :reviews, through: :books
     has_secure_password

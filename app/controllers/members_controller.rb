@@ -1,19 +1,22 @@
 class MembersController < ApplicationController
     get '/signup' do
         if !logged_in?
+            @member = Member.new
             erb :'members/create_member'
         end
     end
 
     post '/signup' do
-        if params[:email] == "" || params[:password] == ""
-            redirect "/signup"
-        else
-            @member = Member.new(email: params[:email], password: params[:password])
+        #can get rid of next line due to validations
+        @member = Member.new(email: params[:email], password: params[:password])
+        #binding.pry
+        if @member.valid?
             @member.save
             session[:member_id] = @member.id
-
             redirect "/books"
+        else
+            #binding.pry
+            redirect "/signup"
         end
     end
 

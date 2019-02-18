@@ -11,6 +11,8 @@ gem 'shotgun'
 gem 'pry'
 gem 'bcrypt'
 gem "tux"
+gem 'sinatra-flash'
+gem 'activemodel', require: 'active_model'
 
 group :test do
   gem 'rspec'
