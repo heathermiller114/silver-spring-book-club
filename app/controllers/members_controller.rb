@@ -7,15 +7,13 @@ class MembersController < ApplicationController
     end
 
     post '/signup' do
-        #can get rid of next line due to validations
         @member = Member.new(email: params[:email], password: params[:password])
-        #binding.pry
+
         if @member.valid?
             @member.save
             session[:member_id] = @member.id
             redirect "/books"
         else
-            #binding.pry
             redirect "/signup"
         end
     end
