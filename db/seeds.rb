@@ -8,7 +8,7 @@ member_list = [
 ]
 
 member_list.each do |email, password|
-    Member.create(name: name, password: password)
+    Member.create(email: email, password: password)
 end
 
 #create books (title, author, page count, plot, genre, member id)
