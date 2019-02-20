@@ -1,19 +1,19 @@
 <h2>Sign Up Below!</h2>
 <form action="/signup" method="POST">
     <div class="form-group<%= ' has-error' if @member.errors.include?(:email) %>">
-        <input type="text" name="email" placeholder="Email" value="<%= @member.email %>">
+        <input type="text" name="email" placeholder="Email" value="<%= @member.email %>"><br>
         <% if !@member.valid? %>
             <% @member.errors.full_messages_for(:email).each do |message| %>
-                <span class="help-block"><%= message %></span>
+                <span class="help-block"><%= message %></span><br><br>
             <% end %>
         <% end %>
     </div>
     <div class="form-group<%= ' has-error' if @member.errors.include?(:password) %>">
-        <input type="password" name="password" placeholder="Password">
+        <input type="password" name="password" placeholder="Password"><br>
         <% if !@member.valid? %>
             <% @member.errors.full_messages_for(:password).each do |message| %>
-                <span class="help-block"><%= message %></span>
+                <span class="help-block"><%= message %></span><br>
             <% end %>
-        <% end %>
+        <% end %><br>
     <input type="submit" value="Sign Up">
 </form>
