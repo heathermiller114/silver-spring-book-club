@@ -1,0 +1,8 @@
+<h3>Find out what we're reading:</h3>
+<ul>
+    <% @books.each do |book| %>
+    <li><a href="/books/<%= book.slug %>"><%= book.title %></a></li>
+<% end %>
+</ul>
+
+<h2>Genre: <a href="/genres/<%= genre.slug %>"><%= genre.name %></a></h2>
