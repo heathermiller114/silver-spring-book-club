@@ -1,0 +1,9 @@
+<form action="/books/<%= @book.slug %>" method="POST">
+    <input id="hidden" type="hidden" name="_method" value="PATCH">
+    <input type="text" name="title" placeholder="Title" value="<%= @book.title %>"><br><br>
+    <input type="text" name="author" placeholder="Author" value="<%= @book.author %>"><br><br>
+    <input type="text" name="page_count" placeholder="Page Count" value="<%= @book.page_count%>"><br><br>
+    <textarea rows="4" cols="50" name="plot" placeholder="Plot"><%= @book.plot %></textarea><br><br>
+    <input type="text" name="genre" placeholder="Genre" value="<%= @book.genre %>"><br><br>
+    <input type="submit" value="Update">
+</form>

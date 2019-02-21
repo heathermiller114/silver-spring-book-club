@@ -18,12 +18,13 @@ class BooksController < ApplicationController
     end
 
     post '/books' do
-        binding.pry
+        #binding.pry
         if params[:title].empty? || params[:author].empty? || params[:page_count].empty? || params[:plot].empty? || params[:genre].empty?
             redirect "/books/new"
         else
             @book = Book.create(params)
             @book.member_id = current_member.id
+            #binding.pry
             @book.save
 
             redirect "/books"
@@ -42,15 +43,43 @@ class BooksController < ApplicationController
 
     #Update
     get '/books/:slug/edit' do
+        #binding.pry
         @book = Book.find_by_slug(params[:slug])
         if logged_in? && @book && @book.member_id == current_member.id
             erb :'books/edit_book'
         else
-            redirect '/login'
+            redirect "/books/#{@book.slug}"
         end
     end
 
     patch '/books/:slug' do
+        @book = Book.find_by_slug(params[:slug])
+        if params[:title].empty? || params[:author].empty? || params[:page_count].empty? || params[:plot].empty? || params[:genre].empty?
+            redirect "/books/#{@book.slug}/edit"
+        else
+            @book.update(title: params[:title])
+            @book.update(author: params[:author])
+            @book.update(page_count: params[:page_count])
+            @book.update(plot: params[:plot])
+            @book.update(genre: params[:genre])
+            
+            redirect "/books/#{@book.slug}"
+        end
+    end
+
+
+
+    patch '/tweets/:id' do
+        @tweet = Tweet.find_by(id: params[:id])
+        #binding.pry
+
+        if params[:content].empty?
+            redirect "/tweets/#{@tweet.id}/edit"
+        else
+            @tweet.update(content: params[:content])
+
+            redirect "/tweets/#{@tweet.id}"
+        end
 
     end
 
