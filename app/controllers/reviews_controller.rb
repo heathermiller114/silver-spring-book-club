@@ -21,19 +21,26 @@ class ReviewsController < ApplicationController
             @review.book_id = this_book.id
 
             @review.save
-            binding.pry
+
             redirect "/books"
         end
     end
 
     #Read
     get '/reviews/:id' do
-
+        #do I need this?? 
     end
 
     #Update
     get '/reviews/:id/edit' do
-
+        @review = Review.find_by(id: params[:id])
+        if !logged_in?
+            redirect "/login"
+        elsif logged_in? && @review && @review.member_id == current_member.id
+            erb :'review/edit_review'
+        else
+            redirect "/books"
+        end
     end
 
     patch '/reviews/:id' do
