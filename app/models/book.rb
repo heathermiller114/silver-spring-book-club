@@ -5,6 +5,6 @@ class Book < ActiveRecord::Base
 
 
     def slug
-        name.downcase.gsub(" ", "-")
+        title.downcase.gsub(" ", "-")
     end
 end
