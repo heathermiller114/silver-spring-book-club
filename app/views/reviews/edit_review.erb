@@ -1,0 +1,14 @@
+<h2>Write Your Review Here!</h2>
+<form action="/reviews/<%= @review.id %>" method="POST" id=bookreviews>
+    <input id="hidden" type="hidden" name="_method" value="PATCH">
+  <!---is there a way to pre-select which book??? -->  
+    <select name="book" form="bookreviews">
+    <% @books.each do |book| %>
+    <option value="<%= book.title %>"><%= book.title %></option>
+    <% end %>
+    </select><br><br>
+
+    <textarea rows="4" cols="50" name="content" placeholder="What did you think?">@review.content</textarea><br><br>
+
+    <input type="submit" value="Update">
+</form>
