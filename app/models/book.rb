@@ -1,4 +1,5 @@
 class Book < ActiveRecord::Base
-    belongs_to :member
+    has_many :member_books
+    has_many :members, through: :member_books
     has_many :reviews
 end
