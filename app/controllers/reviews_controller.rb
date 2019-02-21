@@ -1,11 +1,12 @@
 class ReviewsController < ApplicationController
-    get '/reviews' do
-
-    end
-
     #Create
     get '/reviews/new' do
-
+        if logged_in?
+            @books = Book.all
+            erb :'reviews/new'
+        else
+            redirect '/login'
+        end
     end
 
     post '/reviews' do

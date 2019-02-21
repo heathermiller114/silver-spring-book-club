@@ -1,0 +1,14 @@
+<h2>Write Your Review Here!</h2>
+<form action="/reviews" method="POST" id=bookreviews>
+    
+    <select name="booklist" form="bookreviews">
+    <% @books.each do |book| %>
+    <option value="<%= book.title %>"><%= book.title %></option>
+    <% end %>
+    </select><br><br>
+
+    <textarea rows="4" cols="50" name="content" placeholder="What did you think?"></textarea><br><br>
+
+    <input type="submit" value="Submit">
+</form>
+

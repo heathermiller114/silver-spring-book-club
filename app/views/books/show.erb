@@ -11,4 +11,8 @@
 <form method="POST" action="/books/<%= @book.slug %>/delete">
     <input id="hidden" type="hidden" name="_method" value="DELETE">
     <button type="submit">Delete Book</button>
+</form><br><br><br>
+<h2>Reviews:</h2>
+<form action="/reviews/new">
+    <button type="sumbit">Write A Review</button>
 </form>
