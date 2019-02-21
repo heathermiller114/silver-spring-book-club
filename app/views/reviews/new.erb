@@ -1,7 +1,7 @@
 <h2>Write Your Review Here!</h2>
 <form action="/reviews" method="POST" id=bookreviews>
     
-    <select name="booklist" form="bookreviews">
+    <select name="book" form="bookreviews">
     <% @books.each do |book| %>
     <option value="<%= book.title %>"><%= book.title %></option>
     <% end %>

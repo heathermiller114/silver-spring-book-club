@@ -13,6 +13,11 @@
     <button type="submit">Delete Book</button>
 </form><br><br><br>
 <h2>Reviews:</h2>
+    <% this_book_reviews = @reviews.select {|review| review.book_id == @book.id} %>
+    <% this_book_reviews.each do |individual_review| %>
+        <h4><%= individual_review.content %></h4>
+        <h6>Written At: <%= individual_review.updated_at %></h6>
+    <% end %><br><br>
 <form action="/reviews/new">
     <button type="sumbit">Write A Review</button>
 </form>
