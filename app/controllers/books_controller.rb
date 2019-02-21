@@ -19,19 +19,33 @@ class BooksController < ApplicationController
 
     post '/books' do
         #binding.pry
+        if params[:title].empty?
+            redirect "/books/new"
+        else
+            @book = Book.create(params)
+            @book.member_id = current_member.id
+            @book.save
+
+            redirect "/books"
+        end
     end
 
     #Read
-    get '/books/:id' do
-
+    get '/books/:slug' do
+        if logged_in?
+            @book = Book.find_by_slug(params[:slug])
+            erb :'books/show'
+        else
+            redirect "/login"
+        end
     end
 
     #Update
-    get '/books/:id/edit' do
+    get '/books/:slug/edit' do
 
     end
 
-    patch '/books/:id' do
+    patch '/books/:slug' do
 
     end
 

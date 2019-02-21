@@ -7,4 +7,9 @@ class Book < ActiveRecord::Base
     def slug
         title.downcase.gsub(" ", "-")
     end
+
+    def self.find_by_slug(slug)
+        books = Book.all
+        books.find {|book| book.slug == slug}
+    end
 end
