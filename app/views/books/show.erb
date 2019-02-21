@@ -2,4 +2,11 @@
 <h3>Author: <%= @book.author %></h3>
 <h3>Page Count: <%= @book.page_count %></h3>
 <h3>Plot: <%= @book.plot %></h3>
-<h3>Genre: <%= @book.genre %></h3>
+<h3>Genre: <%= @book.genre %></h3><br><br><br>
+
+<h4><a href="/books/<%= @book.slug %>/edit">Edit Book</h4>
+
+<form method="POST" action="/books/<%= @book.slug %>/delete">
+    <input id="hidden" type="hidden" name="_method" value="DELETE">
+    <input type="submit" value="Delete Book">
+</form>

@@ -45,7 +45,9 @@ class BooksController < ApplicationController
     get '/books/:slug/edit' do
         #binding.pry
         @book = Book.find_by_slug(params[:slug])
-        if logged_in? && @book && @book.member_id == current_member.id
+        if !logged_in?
+            redirect '/login'
+        elsif logged_in? && @book && @book.member_id == current_member.id
             erb :'books/edit_book'
         else
             redirect "/books/#{@book.slug}"
@@ -62,29 +64,23 @@ class BooksController < ApplicationController
             @book.update(page_count: params[:page_count])
             @book.update(plot: params[:plot])
             @book.update(genre: params[:genre])
-            
+
             redirect "/books/#{@book.slug}"
         end
     end
 
-
-
-    patch '/tweets/:id' do
-        @tweet = Tweet.find_by(id: params[:id])
-        #binding.pry
-
-        if params[:content].empty?
-            redirect "/tweets/#{@tweet.id}/edit"
-        else
-            @tweet.update(content: params[:content])
-
-            redirect "/tweets/#{@tweet.id}"
-        end
-
-    end
-
     #Delete
-    delete '/books/:id/delete' do
+    delete '/books/:slug/delete' do
+        book = Book.find_by_slug(params[:slug])
+
+        if !logged_in?
+            redirect '/login'
+        elsif logged_in? && book && book.member_id == current_member.id
+            book.delete
+            redirect '/books'
+        else
+            redirect "/books/#{book.slug}"
+        end
 
     end
 
