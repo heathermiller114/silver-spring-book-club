@@ -33,10 +33,9 @@ class BooksController < ApplicationController
 
     #Read
     get '/books/:slug' do
-        @reviews = Review.all
         if logged_in?
             @book = Book.find_by_slug(params[:slug])
-            #binding.pry
+            binding.pry
             erb :'books/show'
         else
             redirect "/login"

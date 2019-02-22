@@ -12,16 +12,14 @@
     <input id="hidden" type="hidden" name="_method" value="DELETE">
     <button type="submit">Delete Book</button>
 </form><br><br><br>
+
 <h2>Reviews:</h2>
-    <% this_book_reviews = @reviews.select {|review| review.book_id == @book.id} %>
-    <% if this_book_reviews == []%>
-        <h4>No reviews yet! Read this book and be the first :)</h4>
-    <% else 
-        this_book_reviews.each do |individual_review| %>
-        <h4><%= individual_review.content %></h4>
-        <h6>Written At: <%= individual_review.updated_at %></h6>
-        <% end %>
-    <% end %><br><br>
-<form action="/reviews/new">
-    <button type="sumbit">Write A Review</button>
+<% @book.reviews.each do |review| %>
+    <h4><%= review.content %></h4>
+    <% member = Member.find_by(review.member_id) %>
+    <h6>Written at: <%= review.updated_at %> by <%= member.email %></h6>
+<% end %><br><br>
+<form action="/reviews" method="POST">
+    <textarea rows="4" cols="50" name="content" placeholder="What did you think?"></textarea><br><br>
+    <input type="submit" value="Submit">
 </form>
