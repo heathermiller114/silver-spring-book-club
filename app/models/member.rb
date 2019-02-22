@@ -5,7 +5,7 @@ class Member < ActiveRecord::Base
 
     has_many :member_books
     has_many :books, through: :member_books
-    #has_many :reviews, through: :books
+    has_many :reviews
     has_secure_password
 
     validates :email, presence: true
