@@ -35,11 +35,26 @@ class BooksController < ApplicationController
     get '/books/:slug' do
         if logged_in?
             @book = Book.find_by_slug(params[:slug])
-            binding.pry
+            #binding.pry
             erb :'books/show'
         else
             redirect "/login"
         end
+    end
+
+    post '/books/:slug' do
+        @book = Book.find_by_slug(params[:slug])
+        #binding.pry
+        if params[:content].empty?
+            redirect "/books/#{@book.slug}"
+        else
+            @review = Review.create(content: params[:content])
+            @review.member_id = current_member.id
+            @book.reviews << @review
+
+            redirect "/books/#{@book.slug}"
+        end
+
     end
 
     #Update
