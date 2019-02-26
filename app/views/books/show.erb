@@ -17,7 +17,14 @@
 <% @book.reviews.each do |review| %>
     <h4><%= review.content %></h4>
     <% member = Member.find_by(review.member_id) %>
-    <h6>Written at: <%= review.updated_at %> by <%= member.email %></h6><br><br>
+    <h6>Written at: <%= review.updated_at %> by <%= member.email %></h6><br>
+    <form action="reviews/<%= review.id %>/edit">
+        <button type="submit">Edit Review</button>
+    </form>
+    <form method="POST" action="/reviews/<%= review.id %>/delete">
+    <input id="hidden" type="hidden" name="_method" value="DELETE">
+    <button type="submit">Delete Review</button>
+    </form>
 <% end %><br><br>
 <form action="/books/<%= @book.slug %>" method="POST">
     <textarea rows="4" cols="50" name="content" placeholder="What did you think?"></textarea><br><br>

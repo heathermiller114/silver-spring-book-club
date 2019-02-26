@@ -97,8 +97,6 @@ class BooksController < ApplicationController
         else
             redirect "/books/#{book.slug}"
         end
-
     end
-
 
 end
