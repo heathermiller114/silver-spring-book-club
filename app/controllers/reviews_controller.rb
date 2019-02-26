@@ -26,19 +26,14 @@ class ReviewsController < ApplicationController
         end
     end
 
-    #Read
-    get '/reviews/:id' do
-        #do I need this?? 
-    end
-
     #Update
-    get '/reviews/:id/edit' do
+    get '/books/reviews/:id/edit' do
         binding.pry
         @review = Review.find_by(id: params[:id])
         if !logged_in?
             redirect "/login"
         elsif logged_in? && @review && @review.member_id == current_member.id
-            erb :'review/edit_review'
+            erb :'reviews/edit_review'
         else
             redirect "/books"
         end

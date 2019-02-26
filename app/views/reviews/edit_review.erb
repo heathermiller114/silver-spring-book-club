@@ -1,31 +1,7 @@
 <h2>Write Your Review Here!</h2>
-<form action="/reviews/<%= @review.id %>" method="POST" id=bookreviews>
+<form action="/reviews/<%= @review.id %>" method="POST">
     <input id="hidden" type="hidden" name="_method" value="PATCH">
-  <!---is there a way to pre-select which book??? -->  
-    <select name="book" form="bookreviews">
-    <% @books.each do |book| %>
-    <option value="<%= book.title %>"><%= book.title %></option>
-    <% end %>
-    </select><br><br>
-
-    <textarea rows="4" cols="50" name="content" placeholder="What did you think?">@review.content</textarea><br><br>
-
+    <textarea rows="4" cols="50" name="content" placeholder="What did you think?"><%=@review.content%></textarea><br><br>
     <input type="submit" value="Update">
 </form>
 
-
-<!---from book/show page -->
-
-<h2>Reviews:</h2>
-    <% this_book_reviews = @reviews.select {|review| review.book_id == @book.id} %>
-    <% if this_book_reviews == []%>
-        <h4>No reviews yet! Read this book and be the first :)</h4>
-    <% else 
-        this_book_reviews.each do |individual_review| %>
-        <h4><%= individual_review.content %></h4>
-        <h6>Written At: <%= individual_review.updated_at %></h6>
-        <% end %>
-    <% end %><br><br>
-<form action="/reviews/new">
-    <button type="sumbit">Write A Review</button>
-</form>
