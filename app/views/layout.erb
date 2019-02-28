@@ -16,6 +16,14 @@
   <body>
     <div class="wrapper">
       <h1>Best Book Club</h1>
+        <% if logged_in? %>
+          <form action="/books">
+            <button type="submit">Home</button>
+          </form>
+          <form action="/logout">
+            <button type="submit">Logout</button>
+          </form>
+        <% end %>
         <%= yield %>
 
       <footer class="branding">
