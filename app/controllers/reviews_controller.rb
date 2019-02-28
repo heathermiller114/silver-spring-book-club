@@ -27,8 +27,8 @@ class ReviewsController < ApplicationController
     end
 
     #Update
-    get '/books/reviews/:id/edit' do
-        binding.pry
+    get '/reviews/:id/edit' do
+        #binding.pry
         @review = Review.find_by(id: params[:id])
         if !logged_in?
             redirect "/login"
@@ -40,7 +40,16 @@ class ReviewsController < ApplicationController
     end
 
     patch '/reviews/:id' do
+        #binding.pry
+        @review = Review.find_by(id: params[:id])
+        @book = Book.find_by(id: @review.book_id)
+        if params[:content].empty?
+            redirect "/reviews/#{review.id}/edit"
+        else
+            @review.update(content: params[:content])
 
+            redirect "/books/#{@book.slug}"
+        end
     end
 
     #Delete
