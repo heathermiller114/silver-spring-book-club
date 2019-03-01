@@ -1,11 +1,10 @@
 # Best Book Club
 
-This book club app allows users to sign up/log in for a book club, see the books and leave reviews.
+This book club app allows users to sign up/log in for a book club, and has CRUD applications the user can use for books and reviews.
 
-# Development
-After checking out the repo, run bin/setup to install dependencies. You can also run bin/console for an interactive prompt that will allow you to experiment.
+# Installation
 
-To install this gem onto your local machine, run bundle exec rake install. To release a new version, update the version number in version.rb, and then run bundle exec rake release, which will create a git tag for the version, push git commits and tags, and push the .gem file to rubygems.org.
+This app can be installed by running 'git clone git@github.com:heathermiller114/sinatra-final-project.git' in your terminal.
 
 # Contributing
 Bug reports and pull requests are welcome on GitHub at https://github.com/'heathermiller114'/sinatra-final-project. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the Contributor Covenant code of conduct.
