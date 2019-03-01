@@ -6,24 +6,29 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">    
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/main.css" />
+    
     <title>SinatraFinalProject</title>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <link rel="stylesheet" href="stylesheets/main.css" />
   </head>
   <body>
-    <div class="wrapper">
-      <h1>Best Book Club</h1>
+    <div class="container-fluid">
         <% if logged_in? %>
-          <form action="/books">
-            <button type="submit">Home</button>
-          </form>
-          <form action="/logout">
-            <button type="submit">Logout</button>
-          </form>
+          <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="#">Silver Spring Book Club</a>
+              <div class="nav-item1">
+                <a class="nav-link" href="/books">Home</a>
+              </div>
+              <div class="nav-item2">
+                <a class="nav-link" href="/logout">Logout</a>
+              </div>
+          </nav>
         <% end %>
+      </div>
+    <div class="wrapper">
+
         <%= yield %>
 
       <footer class="branding">

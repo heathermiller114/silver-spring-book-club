@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Laila');
+
+
 @media screen {
   /* --- Reset Styles --- */
   * {
@@ -13,14 +16,14 @@
 
   /* --- Welcome Page Styles --- */
   body {
-    background-color: rgb(204, 102, 255);
-    color: rgb(204, 102, 255);
-    font-family: Sans-Serif;
+    background-color: #97A4B6;
+    color: #675878;
+    font-family: 'Laila', serif;
     line-height: 18px;
   }
 
   .wrapper {
-    background: rgb(255, 204, 255);
+    background: #C1D9E6;
     -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
     box-shadow: 0 0 10px rgba(0,0,0,.3);
@@ -28,6 +31,27 @@
     max-width: 960px;
     padding: 2.25%; /* 18px / 800px */
     width: 85%;
+  }
+
+  .container-fluid {
+    color:  #675878;
+    width: 100%;
+  }
+
+  div.nav-item1 {
+    position: absolute;
+    right: 75px;
+    top: 10px;
+  }
+
+  div.nav-item2 {
+    position: absolute;
+    right: 0;
+    top: 10px;
+  }
+
+  a {
+    color:  #675878;;
   }
 
   h1 {
