@@ -1,4 +1,14 @@
-<h2>Welcome to Best Book Club</h2>
+<div class="container-fluid home">
+    <div class="col-12">
+        <h1>Welcome to the Silver Spring Book Club</h1>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <%= erb :'members/create_member' %>
+        </div>
 
-<h3><a href="/signup">Signup</a></h3>
-<h3><a href="/login">Login</a></h3>
+        <div class="col-6">
+            <%= erb :'members/login'%>
+        </div>
+    </div>
+</div>

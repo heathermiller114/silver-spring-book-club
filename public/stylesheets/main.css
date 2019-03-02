@@ -33,7 +33,7 @@
     width: 85%;
   }
 
-  .container-fluid {
+  nav {
     color:  #675878;
     width: 100%;
   }
@@ -53,6 +53,15 @@
   div.inline form {
     display: inline-block;
     margin-right: 5px;
+  }
+
+  div.col-12 {
+    margin-bottom: 50px;
+    text-align: center;
+  }
+
+  div.col-6 {
+    text-align: center;
   }
 
   a {
