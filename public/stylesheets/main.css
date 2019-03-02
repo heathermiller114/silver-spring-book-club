@@ -50,6 +50,11 @@
     top: 10px;
   }
 
+  div.inline form {
+    display: inline-block;
+    margin-right: 5px;
+  }
+
   a {
     color:  #675878;;
   }
@@ -101,9 +106,12 @@
   }
 
   footer.branding {
-    border-top: 2px solid #ccc;
-    margin-top: 20px;
-    padding-top: 20px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    background-color: #C3A46B;
   }
 }
 

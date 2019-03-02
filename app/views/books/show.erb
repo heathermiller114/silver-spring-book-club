@@ -6,11 +6,11 @@
 
 
 <form action="/books/<%= @book.slug %>/edit">
-    <button type="submit">Edit Book</button>
-</form>
+    <button type="submit" class="btn btn-outline-primary">Edit Book</button>
+</form><br>
 <form method="POST" action="/books/<%= @book.slug %>/delete">
     <input id="hidden" type="hidden" name="_method" value="DELETE">
-    <button type="submit">Delete Book</button>
+    <button type="submit" class="btn btn-outline-primary">Delete Book</button>
 </form><br><br><br>
 
 <h2>Reviews:</h2>
@@ -18,15 +18,17 @@
     <h4><%= review.content %></h4>
     <% @member = Member.find_by(id: review.member_id) %>
     <h6>Written at: <%= review.updated_at %> by <%= @member.email %></h6>
-    <form action="/reviews/<%= review.id %>/edit">
-        <button type="submit">Edit Review</button>
-    </form>
-    <form method="POST" action="/reviews/<%= review.id %>/delete">
-    <input id="hidden" type="hidden" name="_method" value="DELETE">
-    <button type="submit">Delete Review</button>
-    </form><br><br>
+    <div class="inline">
+        <form action="/reviews/<%= review.id %>/edit">
+            <button type="submit" class="btn btn-outline-primary btn-sm">Edit Review</button>
+        </form>
+        <form method="POST" action="/reviews/<%= review.id %>/delete">
+            <input id="hidden" type="hidden" name="_method" value="DELETE">
+            <button type="submit" class="btn btn-outline-primary btn-sm" id="delete">Delete Review</button>
+        </form><br><br>
+    </div>
 <% end %><br><br>
 <form action="/books/<%= @book.slug %>" method="POST">
     <textarea rows="4" cols="50" name="content" placeholder="What did you think?"></textarea><br><br>
-    <input type="submit" value="Submit">
+    <input type="submit" value="Submit" class="btn btn-outline-primary btn-sm">
 </form>
