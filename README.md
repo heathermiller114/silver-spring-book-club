@@ -9,10 +9,12 @@ This app can be installed by running 'git clone git@github.com:heathermiller114/
 # Usage
 
 After cloning, run
+```
 $ bundle install
 $ rake db:migrate
 $ rake db:seed
 $ shotgun
+```
 
 # Contributing
 Bug reports and pull requests are welcome on GitHub at https://github.com/'heathermiller114'/sinatra-final-project. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the Contributor Covenant code of conduct.
