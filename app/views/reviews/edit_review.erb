@@ -2,6 +2,6 @@
 <form action="/reviews/<%= @review.id %>" method="POST">
     <input id="hidden" type="hidden" name="_method" value="PATCH">
     <textarea rows="4" cols="50" name="content" placeholder="What did you think?"><%=@review.content%></textarea><br><br>
-    <input type="submit" value="Update Review">
+    <input type="submit" class="btn btn-outline-primary btn-sm" value="Update Review">
 </form>
 
