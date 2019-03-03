@@ -4,7 +4,7 @@ This book club app allows members to sign up/log in for the Silver Spring book c
 
 # Installation
 
-This app can be installed by running 'git clone git@github.com:heathermiller114/sinatra-final-project.git' in your terminal.
+This app can be installed by running `git clone git@github.com:heathermiller114/sinatra-final-project.git` in your terminal.
 
 # Usage
 
