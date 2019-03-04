@@ -18,7 +18,7 @@
 <% @book.reviews.each do |review| %>
     <h4><%= review.content %></h4>
     <% @member = Member.find_by(id: review.member_id) %>
-    <h6>Written at: <%= review.updated_at.strftime("%m/%d/%Y") %> by <%= @member.email %></h6>
+    <h6>Written on: <%= review.updated_at.strftime("%m/%d/%Y") %> by <%= @member.email %></h6>
     <div class="inline">
         <% if @member.id == current_member.id %>
             <form action="/reviews/<%= review.id %>/edit">

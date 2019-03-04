@@ -14,7 +14,7 @@ class MembersController < ApplicationController
             session[:member_id] = @member.id
             redirect "/books"
         else
-            redirect "/signup"
+            redirect "/"
         end
     end
 
@@ -33,7 +33,7 @@ class MembersController < ApplicationController
             session[:member_id] = @member.id
             redirect "/books"
         else
-            redirect "/login"
+            redirect "/"
         end
     end
 
