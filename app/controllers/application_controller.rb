@@ -19,7 +19,7 @@ class ApplicationController < Sinatra::Base
     end
 
     def current_member
-      Member.find(session[:member_id])
+      @current_member ||= Member.find(session[:member_id])
     end
     
     def redirect_if_not_logged_in
