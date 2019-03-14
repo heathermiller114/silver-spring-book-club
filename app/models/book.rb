@@ -3,6 +3,8 @@ class Book < ActiveRecord::Base
     has_many :members, through: :member_books
     has_many :reviews
 
+    validates :title, uniqueness: true
+
 
     def slug
         title.downcase.gsub(" ", "-")
