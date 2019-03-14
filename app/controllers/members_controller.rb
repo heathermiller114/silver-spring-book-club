@@ -9,8 +9,7 @@ class MembersController < ApplicationController
     post '/signup' do
         @member = Member.new(email: params[:email], password: params[:password])
 
-        if @member.valid?
-            @member.save
+        if @member.save
             session[:member_id] = @member.id
             redirect "/books"
         else

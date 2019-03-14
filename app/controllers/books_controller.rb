@@ -1,24 +1,19 @@
 class BooksController < ApplicationController
     get '/books' do
-        if !logged_in?
-            redirect "/login"
-        else
-            @books = Book.all
-            erb :'books/books'
-        end
+        redirect_if_not_logged_in
+        @books = Book.all
+        erb :'books/books'
     end
 
     #Create
     get '/books/new' do
-        if !logged_in?
-            redirect "/login"
-        else
-            erb :'books/new'
-        end
+        redirect_if_not_logged_in
+        erb :'books/new'
     end
 
     post '/books' do
         #binding.pry
+        redirect_if_not_logged_in
         if params[:title].empty? || params[:author].empty? || params[:page_count].empty? || params[:plot].empty? || params[:genre].empty?
             redirect "/books/new"
         else
@@ -33,24 +28,21 @@ class BooksController < ApplicationController
 
     #Read
     get '/books/:slug' do
-        if logged_in?
-            @book = Book.find_by_slug(params[:slug])
+        redirect_if_not_logged_in
+        @book = Book.find_by_slug(params[:slug])
             #binding.pry
-            erb :'books/show'
-        else
-            redirect "/login"
-        end
+        erb :'books/show'
     end
 
     post '/books/:slug' do
+        redirect_if_not_logged_in
         @book = Book.find_by_slug(params[:slug])
         #binding.pry
         if params[:content].empty?
             redirect "/books/#{@book.slug}"
         else
-            @review = Review.create(content: params[:content])
-            @review.member_id = current_member.id
-            @book.reviews << @review
+            @review = @book.reviews.build(content: params[:content], member_id: current_member.id)
+            @review.save
 
             redirect "/books/#{@book.slug}"
         end
@@ -60,10 +52,9 @@ class BooksController < ApplicationController
     #Update
     get '/books/:slug/edit' do
         #binding.pry
+        redirect_if_not_logged_in
         @book = Book.find_by_slug(params[:slug])
-        if !logged_in?
-            redirect '/login'
-        elsif logged_in? && @book && @book.member_id == current_member.id
+        if logged_in? && @book && @book.member_id == current_member.id
             erb :'books/edit_book'
         else
             redirect "/books/#{@book.slug}"
@@ -71,22 +62,26 @@ class BooksController < ApplicationController
     end
 
     patch '/books/:slug' do
+        redirect_if_not_logged_in
         @book = Book.find_by_slug(params[:slug])
         if params[:title].empty? || params[:author].empty? || params[:page_count].empty? || params[:plot].empty? || params[:genre].empty?
             redirect "/books/#{@book.slug}/edit"
         else
-            @book.update(title: params[:title])
-            @book.update(author: params[:author])
-            @book.update(page_count: params[:page_count])
-            @book.update(plot: params[:plot])
-            @book.update(genre: params[:genre])
+            if logged_in? && @book && @book.member_id == current_member.id
+                @book.update(title: params[:title])
+                @book.update(author: params[:author])
+                @book.update(page_count: params[:page_count])
+                @book.update(plot: params[:plot])
+                @book.update(genre: params[:genre])
 
-            redirect "/books/#{@book.slug}"
+            end
+            redirect "/books/#{@book.slug}" 
         end
     end
 
     #Delete
     delete '/books/:slug/delete' do
+        redirect_if_not_logged_in
         book = Book.find_by_slug(params[:slug])
 
         if !logged_in?
